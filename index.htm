@@ -1,0 +1,55 @@
+<!-- Basic outline for starting index -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>Document</title>
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h1 class="display-4">Giphy Search!</h1>
+    <p class="lead">Click a button to search Giphy, the greatest Gif database ever!</p>
+    <hr class="my-4" />
+    <p>Click a button below to get gifs! You can also make your own button by using the card below!</p>
+    <div class="lead"  id="ajaxButtonsDiv"></div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-md-3 col-lg-3">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" src="https://developers.giphy.com/branch/master/static/api-c99e353f761d318322c853c03ebcf21b.gif" alt="Giphy image">
+            <div class="card-body">
+              <h5 class="card-title">Add your own button!</h5>
+              <p class="card-text">Use this card to add your own seach term to the giphy search buttons!</p>
+              <hr />
+              <form id="searchButton-form">
+                <label for="addSearchButton">Add your own button!</label><br />
+                <input id="addSearchButton" type="text"><br />
+                <button id="addButton" class="btn-md btn-primary">Go!</button>
+              </form>
+            </div> <!--card end-->
+        </div>
+    </div>
+    <div class="col-xs-12 col-md-12 col-lg-9">
+      <div id="ajaxImages"></div>
+    </div>
+  </div>
+</div>
+
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- My JavaScript -->
+  <script type="text/javascript" src="./assets/javascript/gifTastic.js"></script>
+</body>
+</html>
