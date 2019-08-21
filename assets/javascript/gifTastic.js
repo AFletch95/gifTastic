@@ -2,7 +2,7 @@ $searchButtons = $('#ajaxButtonsDiv');
 $ajaxImages = $('#ajaxImages');
 
 // var searchTerm;
-var imagelimit = 10
+const imagelimit = 12
 var giphyButtons = ["Funny cats","turtles","monkeys","birds","bobby hill"];
 
 
@@ -33,18 +33,22 @@ var giphyButtons = ["Funny cats","turtles","monkeys","birds","bobby hill"];
     console.log(response);
     let result = response.data;
     for(let i=0;i<imagelimit;i++){
-      // let div =$('<div>')
       let img =$('<img>');
-      let tag =$('<span>');
+      let rating =$('<span>');
+
       //set src to static url
       //set tag text to gif rating
-      // div.attr("class","container");
       img.attr("src",result[i].images.fixed_height.url);
-      tag.text("Giphy rating: "+ result.rating);
+      rating.text("Giphy rating: "+ result[i].rating);
 
-      img.append(tag);
-      // div.append(img);
-      $ajaxImages.append(img);
+      img.attr("class","giphyImg");
+
+
+    img.append(rating); //append rating to img
+
+
+    $ajaxImages.append(img);
+
 
     }
   });
@@ -53,5 +57,6 @@ var giphyButtons = ["Funny cats","turtles","monkeys","birds","bobby hill"];
 
 $(document).on("click",".ajaxButtons",function(event){
   event.preventDefault();
+  $ajaxImages.empty();
   ajaxGet($(this).text())
 })
