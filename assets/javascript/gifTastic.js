@@ -3,7 +3,7 @@ $ajaxImages = $('#ajaxImages');
 
 // var searchTerm;
 const imagelimit = 12
-var giphyButtons = ["Funny cats","turtles","monkeys","birds","bobby hill"];
+var giphyButtons = ["funny cats","turtles","monkeys","birds","bobby hill"];
 
 
 // Function Calls
@@ -44,7 +44,7 @@ var giphyButtons = ["Funny cats","turtles","monkeys","birds","bobby hill"];
       img.attr("class","giphyImg");
 
 
-    img.append(rating); //append rating to img
+    img.prepend(rating); //prepend rating to img
 
 
     $ajaxImages.append(img);
@@ -59,4 +59,27 @@ $(document).on("click",".ajaxButtons",function(event){
   event.preventDefault();
   $ajaxImages.empty();
   ajaxGet($(this).text())
+})
+$(document).on("click","#addSearchButton",function(event){
+  event.preventDefault();
+  let matchFound = false;
+  let userSearch = $('#addSearchText').val().trim();
+  for(let i=0;i<giphyButtons.length;i++){
+    if(userSearch === giphyButtons[i]){
+      matchFound = true;
+    }
+    else{
+      matchFound = false;
+    }
+  }
+  if(userSearch != "" && matchFound == false){
+    let btn = $("<button>");
+    btn.text(userSearch.toUpperCase());
+    btn.attr("class","btn-sm btn-primary ajaxButtons");
+    $searchButtons.append(btn);
+    giphyButtons.push(userSearch.toLowerCase());
+
+    $('#addSearchText').val("");
+  }
+
 })
