@@ -5,7 +5,6 @@ $ajaxImages = $('#ajaxImages');
 const imagelimit = 12
 var giphyButtons = ["funny cats","turtles","monkeys","birds","bobby hill"];
 
-
 // Function Calls
   makeButtons();
   
@@ -33,21 +32,25 @@ var giphyButtons = ["funny cats","turtles","monkeys","birds","bobby hill"];
     console.log(response);
     let result = response.data;
     for(let i=0;i<imagelimit;i++){
+      let parentDiv = $('<div>');
       let img =$('<img>');
-      let rating =$('<span>');
+      let rating =$('<p>');
 
       //set src to static url
       //set tag text to gif rating
       img.attr("src",result[i].images.fixed_height.url);
       rating.text("Giphy rating: "+ result[i].rating);
 
-      img.attr("class","giphyImg");
+      parentDiv.attr("class","giphyImg");
 
 
-    img.prepend(rating); //prepend rating to img
-
-
-    $ajaxImages.append(img);
+      
+      
+      parentDiv.append(rating);
+      parentDiv.append(img);
+      $ajaxImages.append(parentDiv)
+      // img.prepend(rating.text()); //prepend rating to img
+      console.log("rating is " ,rating.text());
 
 
     }
