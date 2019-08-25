@@ -34,22 +34,24 @@ var giphyButtons = ["funny cats","turtles","monkeys","birds","bobby hill"];
     for(let i=0;i<imagelimit;i++){
       let parentDiv = $('<div>');
       let img =$('<img>');
-      let rating =$('<p>');
+      let rating =$('<span>');
+      let br =$('<br>');
 
       //set src to static url
       //set tag text to gif rating
-      img.attr("src",result[i].images.fixed_height.url);
+      img.attr("src",result[i].images.fixed_height_still.url);
+      img.attr("data-still",result[i].images.fixed_height_still.url);
+      img.attr("data-animate",result[i].images.fixed_height.url);
+      img.attr("data-state","still");
+      img.attr("class","gifImg");
       rating.text("Giphy rating: "+ result[i].rating);
+      parentDiv.attr("class","giphyImg")
 
-      parentDiv.attr("class","giphyImg");
 
-
-      
-      
-      parentDiv.append(rating);
+      img.append(rating);
       parentDiv.append(img);
-      $ajaxImages.append(parentDiv)
-      // img.prepend(rating.text()); //prepend rating to img
+      $ajaxImages.append(parentDiv);
+
       console.log("rating is " ,rating.text());
 
 
@@ -57,6 +59,18 @@ var giphyButtons = ["funny cats","turtles","monkeys","birds","bobby hill"];
   });
   
 }
+$(document).on("click",".gifImg",function(event){
+  event.preventDefault();
+  var state = $(this).attr("data-state");
+
+  if(state === "still"){
+    $(this).attr("src",$(this).attr("data-animate"))
+    $(this).attr("data-state", "animate");
+  } else {
+    $(this).attr("src", $(this).attr("data-still"));
+    $(this).attr("data-state", "still");
+  }
+})
 
 $(document).on("click",".ajaxButtons",function(event){
   event.preventDefault();
